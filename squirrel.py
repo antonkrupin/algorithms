@@ -8,5 +8,3 @@ def squireel(x):
   
   diamonds = str(fact(x))[0]
   return(diamonds)
-
-print(squireel(14))
