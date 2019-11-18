@@ -1,5 +1,5 @@
-def squireel(x):
-  diamonds = 0;
+def squirrel(x):
+  diamonds = 0
   def fact(x):
     if(x == 1):
       return 1
