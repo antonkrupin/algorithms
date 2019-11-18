@@ -7,4 +7,4 @@ def squirrel(x):
       return x * fact(x-1)
   
   diamonds = str(fact(x))[0]
-  return(diamonds)
+  return(int(diamonds))
