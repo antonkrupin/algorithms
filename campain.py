@@ -37,3 +37,22 @@ def ConquestCampaign(n,m,l,battalion=[]):
             
     
 print(ConquestCampaign(3,4,2,[2,2,3,4]))
+
+
+def test():
+    days = 1
+    testArray = [0,0,1,0,0]
+    while 0 in testArray:
+        days = days + 1
+        for i in range(len(testArray)):
+            print(testArray)
+            print(i)
+            if(testArray[i] == 1):
+                counter = testArray.index(testArray[i])
+                if(counter == len(testArray)-1):
+                    testArray[counter - 1] = 1
+                else:
+                    testArray[counter + 1] = 1
+                    testArray[counter - 1] = 1
+    return days 
+print(test())
