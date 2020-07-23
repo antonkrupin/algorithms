@@ -1,9 +1,14 @@
 def ConquestCampaign(n, m, battalion):
     height = n
     width = m
-    days = 0
+    days = 1
+    
     if (height <= 0 or width <= 0):
         return days
+    
+    if (len(battalion) == 0):
+        return days
+    
     #массив для координат поля
     battleFeield = []
     #массив для координат по высоте
@@ -14,15 +19,19 @@ def ConquestCampaign(n, m, battalion):
     #проверка на дублирование координат
     attackPoints = []
     for i in battalion: 
-        if i not in attackPoints: 
+        if i not in attackPoints and len(i) == 2: 
             attackPoints.append(i)
     
+    print(attackPoints)
     #разбиение координат точек нападения
     for x in range(len(attackPoints)):
-        if(attackPoints[x][0] <= height and attackPoints[x][1] <= width):
+        if(attackPoints[x][0] <= height and attackPoints[x][1] <= width and attackPoints[x][0] >= 0 and attackPoints[x][1] >= 0):
             attackPointsHeight.append(attackPoints[x][0]-1)
             attackPointsWidth.append(attackPoints[x][1]-1)
     
+    if(len(attackPointsHeight) == 0 or len(attackPointsWidth) == 0):
+        return days
+        
     #формирование базовой карты
     counterH = height
     
@@ -39,6 +48,8 @@ def ConquestCampaign(n, m, battalion):
     for x in range(len(attackPointsHeight)):
         battleFeield[attackPointsHeight[x]][attackPointsWidth[x]] = 1
     
+    for x in battleFeield:
+        print(x)
     counterH = len(battleFeield)
     counterW = len(battleFeield[0])
     flag = True
@@ -71,4 +82,4 @@ def ConquestCampaign(n, m, battalion):
                         if(battleFeield[i][j-1] == 1):
                             battleFeield[i][j] = 0.5
         days = days + 1
-    return days
+    return days - 1
