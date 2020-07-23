@@ -1,6 +1,9 @@
 def ConquestCampaign(n, m, battalion):
     height = n
     width = m
+    days = 0
+    if (height <= 0 or width <= 0):
+        return days
     #массив для координат поля
     battleFeield = []
     #массив для координат по высоте
@@ -35,8 +38,6 @@ def ConquestCampaign(n, m, battalion):
     #выставление координат точек нападения
     for x in range(len(attackPointsHeight)):
         battleFeield[attackPointsHeight[x]][attackPointsWidth[x]] = 1
-    
-    days = 0
     
     counterH = len(battleFeield)
     counterW = len(battleFeield[0])
