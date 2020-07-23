@@ -1,58 +1,68 @@
-def ConquestCampaign(n,m,l,battalion=[]):
-    #массив для координат начальных точек нападения
-    startCoordsN = [] #координаты по X
-    startCoordsM = [] #координаты по Y
-    i = 0
-    daysToCapture = 1
-    #распределение начальных точек по массивам
-    while(i < len(battalion)):
-        if(i%2 == 0):
-            startCoordsN.append(battalion[i]-1)
-        else:
-            startCoordsM.append(battalion[i]-1)
-        i = i + 1
-        
-    #создание карты
-    mapHeight = n
-    mapWidth = m
-    campainMap = [0] * mapHeight
-    for i in range(mapHeight):
-        campainMap[i] = [0] * mapWidth
-        
-    #добавление начальных точек
-    for i in range(len(startCoordsN)):
-        campainMap[startCoordsN[i]][startCoordsM[i]] = 1
+def ConquestCampaign(n, m, battalion):
+    height = n
+    width = m
+    #массив для координат поля
+    battleFeield = []
+    #массив для координат по высоте
+    attackPointsHeight = []
+    #массив для координат по ширине
+    attackPointsWidth = []
     
-    #вывод карты (для теста)
-    for row in campainMap:
-        for elem in row:
-            print(elem, end=' ')
-        print()
+    #разбиение координат точек нападения
+    for x in range(len(battalion)):
+        if(x%2 == 0):
+            attackPointsHeight.append(battalion[x])
+        if(x%2 != 0):
+            attackPointsWidth.append(battalion[x])
     
-    for row in campainMap:
-        for elem in row:
-            if(elem == 1):
-                print(row.index(elem), end=' ')
-                print(campainMap.index(row))
+    #формирование базовой карты
+    counterH = height
+    
+    while(counterH != 0):
+        counterW = width
+        battleLine = []
+        while(counterW != 0):
+            battleLine.append(0)
+            counterW = counterW - 1
+        battleFeield.append(battleLine)
+        counterH = counterH - 1
+    
+    #выставление координат точек нападения
+    for x in range(len(attackPointsHeight)):
+        battleFeield[attackPointsHeight[x]][attackPointsWidth[x]] = 1
+    
+    days = 0
+    
+    counterH = len(battleFeield)
+    counterW = len(battleFeield[0])
+    flag = True
+    checkZero = 0
+    while(flag):
+        for line in range(len(battleFeield)):
+            if(not 0 in battleFeield[line]):
+                checkZero = checkZero + 1
+            if(checkZero == counterH):
+                flag = False
+        
+        for i in range(len(battleFeield)):
+            for j in range(len(battleFeield[i])):
+                if(battleFeield[i][j] == 0 and i < counterH-1):
+                    if(battleFeield[i+1][j] == 1):
+                        battleFeield[i][j] = 0.5
             
-    
-print(ConquestCampaign(3,4,2,[2,2,3,4]))
-
-
-def test():
-    days = 1
-    testArray = [0,0,1,0,0]
-    while 0 in testArray:
-        days = days + 1
-        for i in range(len(testArray)):
-            print(testArray)
-            print(i)
-            if(testArray[i] == 1):
-                counter = testArray.index(testArray[i])
-                if(counter == len(testArray)-1):
-                    testArray[counter - 1] = 1
-                else:
-                    testArray[counter + 1] = 1
-                    testArray[counter - 1] = 1
-    return days 
-print(test())
+                if(battleFeield[i][j] == 0.5):
+                    battleFeield[i][j] = 1
+            
+                if(battleFeield[i][j] == 0 and j < counterW-1):
+                    if(battleFeield[i][j+1] == 1):
+                        battleFeield[i][j] = 0.5
+        
+                if(i != 0 and battleFeield[i][j] == 0):
+                    if(battleFeield[i-1][j] == 1):
+                        battleFeield[i][j] = 0.5
+        
+                if(j != 0 and battleFeield[i][j] == 0):
+                        if(battleFeield[i][j-1] == 1):
+                            battleFeield[i][j] = 0.5
+        days = days + 1  
+    return days
