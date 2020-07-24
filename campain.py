@@ -33,7 +33,6 @@ def ConquestCampaign(n, m, l, battalion):
         if i not in attackPoints and len(i) == 2: 
             attackPoints.append(i)
     
-    print(attackPoints)
     #формирование базовой карты
     counterH = height
     
@@ -53,19 +52,13 @@ def ConquestCampaign(n, m, l, battalion):
         if((n >= 0 and m >= 0) and (n <= height and m <= width)):
             battleFeield[n-1][m-1] = 1
     
-    for x in battleFeield:
-        print(x)
     counterH = len(battleFeield)
     counterW = len(battleFeield[0])
     flag = True
-    checkZero = 0
+    
     
     while(flag):
-        for line in range(len(battleFeield)):
-            if(not 0 in battleFeield[line]):
-                checkZero = checkZero + 1
-            if(checkZero == counterH):
-                flag = False
+        checkZero = 0
         
         for i in range(len(battleFeield)):
             for j in range(len(battleFeield[i])):
@@ -75,11 +68,15 @@ def ConquestCampaign(n, m, l, battalion):
                 if(battleFeield[i][j] == 0 and i < counterH-1):
                     if(battleFeield[i+1][j] == 1):
                         battleFeield[i][j] = 0.5
-            
+                    if(battleFeield[i+1][j] == 0.5):
+                        battleFeield[i][j] = 0.5
+                        
                 if(battleFeield[i][j] == 0 and j < counterW-1):
                     if(battleFeield[i][j+1] == 1):
                         battleFeield[i][j] = 0.5
-        
+                    if(battleFeield[i][j+1] == 0.5):
+                        battleFeield[i][j] = 0.5
+                        
                 if(i != 0 and battleFeield[i][j] == 0):
                     if(battleFeield[i-1][j] == 1):
                         battleFeield[i][j] = 0.5
@@ -88,8 +85,10 @@ def ConquestCampaign(n, m, l, battalion):
                         if(battleFeield[i][j-1] == 1):
                             battleFeield[i][j] = 0.5
                             
-        print('---------------------------')
-        for x in battleFeield:
-            print(x)
+        for line in range(len(battleFeield)):
+            if(not 0 in battleFeield[line]):
+                checkZero = checkZero + 1
+            if(checkZero == counterH):
+                flag = False
         daysToCapture = daysToCapture + 1
     return daysToCapture
