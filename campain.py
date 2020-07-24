@@ -1,4 +1,4 @@
-def ConquestCampaign(n, m, battalion):
+def ConquestCampaign(n, m, l, battalion):
     height = n
     width = m
     days = 1
@@ -9,6 +9,8 @@ def ConquestCampaign(n, m, battalion):
     if (len(battalion) == 0):
         return days
     
+    if (l <= 0):
+        return days
     #массив для координат поля
     battleFeield = []
     #массив для координат по высоте
