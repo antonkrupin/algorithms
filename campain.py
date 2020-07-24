@@ -88,4 +88,4 @@ def ConquestCampaign(n, m, l, battalion):
                         if(battleFeield[i][j-1] == 1):
                             battleFeield[i][j] = 0.5
         daysToCapture = daysToCapture + 1
-    return daysToCapture
+    return daysToCapture - 1
