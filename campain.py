@@ -69,12 +69,12 @@ def ConquestCampaign(n, m, l, battalion):
         
         for i in range(len(battleFeield)):
             for j in range(len(battleFeield[i])):
+                if(battleFeield[i][j] == 0.5):
+                    battleFeield[i][j] = 1
+                    
                 if(battleFeield[i][j] == 0 and i < counterH-1):
                     if(battleFeield[i+1][j] == 1):
                         battleFeield[i][j] = 0.5
-            
-                if(battleFeield[i][j] == 0.5):
-                    battleFeield[i][j] = 1
             
                 if(battleFeield[i][j] == 0 and j < counterW-1):
                     if(battleFeield[i][j+1] == 1):
@@ -87,5 +87,9 @@ def ConquestCampaign(n, m, l, battalion):
                 if(j != 0 and battleFeield[i][j] == 0):
                         if(battleFeield[i][j-1] == 1):
                             battleFeield[i][j] = 0.5
+                            
+        print('---------------------------')
+        for x in battleFeield:
+            print(x)
         daysToCapture = daysToCapture + 1
-    return daysToCapture - 1
+    return daysToCapture
