@@ -56,10 +56,15 @@ def ConquestCampaign(n, m, l, battalion):
     counterW = len(battleFeield[0])
     flag = True
     
-    
+    checkZero1 = 0
+    for line in range(len(battleFeield)):
+            if(not 0 in battleFeield[line]):
+                checkZero1 = checkZero1 + 1
+            if(checkZero1 == counterH):
+                return daysToCapture
+                
     while(flag):
         checkZero = 0
-        
         for i in range(len(battleFeield)):
             for j in range(len(battleFeield[i])):
                 if(battleFeield[i][j] == 0.5):
