@@ -11,7 +11,16 @@ def WordSearch(length, string, substring):
         if(m == length):
             splitString.append(string[x])
         if(m < length):
-            splitString.append(string[x])
+            j = x + 1
+            test = []
+            test.append(x)
+            for j in range(len(string)):
+                m = m + len(string[j])
+                if(m == length):
+                    test.append(j)
+                    for i in range(len(test)):
+                        splitString.append(string[test[i]] + ' ')
+                if(m < length)
         
             
     
