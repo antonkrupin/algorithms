@@ -1,6 +1,6 @@
 def WordSearch(length, string, substring):
     splitString = []
-    
+    sequence = []
     pointer = 0
     
     if(length >= len(string)):
@@ -13,11 +13,6 @@ def WordSearch(length, string, substring):
                 if(n[-1] == ' '):
                     splitString.append(m)
                     pointer = pointer + length
-                    #for i in reversed(range(len(m))):
-                        #if(m[i] == ' '):
-                            #splitString.append(m[:i])
-                            #pointer = pointer + i + 1
-                            #break
                 if(n[-1] != ' '):
                     for i in reversed(range(len(m))):
                         if(m[i] == ' '):
@@ -29,10 +24,16 @@ def WordSearch(length, string, substring):
                 splitString.append(m)
                 pointer = pointer + length    
     
-    for x in range(len(splitString)-1):
-        if(splitString[x] == ''):
-            splitString.pop(x)
-            
-    print(splitString)
-        
-print(WordSearch(12,"строка разбивается на набор строк через выравнивание по заданной ширине.", "строк"))
+    for x in range(len(splitString)):
+        splitSubString = splitString[x].split()
+        if(len(splitSubString) != 0):
+            counter = 0
+            for i in range(len(splitSubString)):
+                if(substring == splitSubString[i]):
+                    counter = counter + 1
+            if(counter != 0):
+                sequence.append(1)
+            else:
+                sequence.append(0)
+    
+    return sequence
