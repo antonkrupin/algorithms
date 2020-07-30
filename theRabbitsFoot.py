@@ -35,8 +35,8 @@ def TheRabbitsFoot(string, flag):
                     test = test + criptedString[j][i]
                     
             criptedStringFull = criptedStringFull + test + ' '
-            
-        return criptedStringFull
+        
+        return criptedStringFull.strip()
     else:
         print(string)
         splitString = string.split()
