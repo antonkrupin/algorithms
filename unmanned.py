@@ -24,10 +24,8 @@ def Unmanned(roadLength, n, track):
                     else:
                         travelTime += 1
                         break
-        if(x == roadLength):
-            break
-        travelTime += 1
+            else:
+                travelTime += 1
+                break
         
-    return travelTime    
-    
-print(Unmanned(10,2,[[3,5,5],[5,2,2]]))
+    return travelTime
