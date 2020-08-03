@@ -22,10 +22,12 @@ def TankRush(h1,w1,map1,h2,w2,map2):
             for m in range(len(map2)):
                 cross = []
                 if(splittedMap[x][y] == map2[m]):
-                    cross.append(m)
+                    cross.append(map2[m])
                     cross.append(y)
                     crossingMaps.append(cross)
+    
+    
             
     print(crossingMaps)
-    print(splittedMap)     
+         
 print(TankRush(3,4,'1234 2345 0987',2,2,'23 34 98'))
