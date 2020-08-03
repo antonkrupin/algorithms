@@ -5,7 +5,8 @@ def TankRush(h1,w1,map1,h2,w2,map2):
     map2 = map2.split()
     splittedMap = []
     pointer = 0
-    crossingMaps = {}
+    crossingMaps = []
+    numbers = []
     
     for x in range(len(map1)):
         pointer = 0
@@ -22,16 +23,20 @@ def TankRush(h1,w1,map1,h2,w2,map2):
             for m in range(len(map2)):
                 cross = []
                 if(splittedMap[x][y] == map2[m]):
-                    #cross.append(map2[m])
-                    #cross.append(y)
-                    if(map2[m] in crossingMaps):
-                        test = crossingMaps[map2[m]]
-                        crossingMaps[map2[m]] = [test,y]
-                    else:
-                        crossingMaps[map2[m]] = y
+                    cross.append(map2[m])
+                    cross.append(y)
+                    cross.append(x)
+                    crossingMaps.append(cross)
     
-    
-            
+    for x in range(len(map2)):
+        for y in range(len(crossingMaps)):
+            test = []
+            if(map2[x] == crossingMaps[y][0]):
+                test.append(map2[x])
+                test.append(crossingMaps[y][1])
+                numbers.append(test)
+                
+    print(numbers)
     print(crossingMaps)
          
-print(TankRush(3,4,'1234 2345 0987',2,2,'23 34 98'))
+print(TankRush(3,4,'1234 2345 0987',2,2,'34 23 98'))
