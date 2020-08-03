@@ -34,9 +34,11 @@ def TankRush(h1,w1,map1,h2,w2,map2):
             if(map2[x] == crossingMaps[y][0]):
                 test.append(map2[x])
                 test.append(crossingMaps[y][1])
+                test.append(crossingMaps[y][2])
                 numbers.append(test)
                 
     print(numbers)
+    
     print(crossingMaps)
          
-print(TankRush(3,4,'1234 2345 0987',2,2,'34 23 98'))
+print(TankRush(3,4,'1234 2345 0987',2,2,'23 34 98'))
