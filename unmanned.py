@@ -8,8 +8,10 @@ def Unmanned(roadLength, n, track):
     
     if(len(trafficLightsLocation) != 0):
         for x in range(1,roadLength+1):
+            travelTime += 1 
             for i in range(len(trafficLightsLocation)):
                 if(x == trafficLightsLocation[i]):
+                    print(x,travelTime)
                     if(travelTime < track[i][1]):
                         travelTime += track[i][1] - x
                         break
@@ -24,12 +26,6 @@ def Unmanned(roadLength, n, track):
                             and (travelTime%(track[i][1]+track[i][2]) != 0)):
                             travelTime += track[i][1] - travelTime%(track[i][1]+track[i][2])
                             break
-                        else:
-                            travelTime += 1
-                            break
-            
-            travelTime += 1 
-            
     else:
         travelTime = roadLength
     return travelTime
