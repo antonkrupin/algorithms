@@ -1,10 +1,11 @@
 def Unmanned(roadLength, n, track):
-    travelTime = 1
+    travelTime = 0
     trafficLightsLocation = []
     
     for x in range(len(track)):
         if(track[x][0] < roadLength):
             trafficLightsLocation.append(track[x][0])
+    
     if(len(trafficLightsLocation) != 0):
         for x in range(1,roadLength+1):
             for i in range(len(trafficLightsLocation)):
@@ -26,9 +27,9 @@ def Unmanned(roadLength, n, track):
                         else:
                             travelTime += 1
                             break
-                else:
-                    travelTime += 1
-                    break
+            
+            travelTime += 1 
+            
     else:
         travelTime = roadLength
     return travelTime
