@@ -9,6 +9,9 @@ def TankRush(h1,w1,map1,h2,w2,map2):
     counters = []
     strokes = []
     
+    if(h1 <= 0 or h2 <= 0 or w1 <= 0 or w2 <= 0):
+        return False
+    
     if(h2 > h1 or w2 > w1):
         return False
     else:
@@ -31,12 +34,12 @@ def TankRush(h1,w1,map1,h2,w2,map2):
                         cross.append(y)
                         cross.append(x)
                         crossingMaps.append(cross)
-    
+        
         for x in range(len(crossingMaps)):
             if(map2[0] in crossingMaps[x]):
                 positions.append(crossingMaps[x][1])
                 strokes.append(crossingMaps[x][2])
-           
+        
         for x in range(len(positions)):
             counter = 0
             for y in range(len(crossingMaps)):
