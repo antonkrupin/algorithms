@@ -21,7 +21,6 @@ def TankRush(h1,w1,map1,h2,w2,map2):
             for y in range(len(map1[x])):
                 if(len(map1[x][pointer:pointer+w2]) == w2):
                     test = map1[x][pointer:pointer+w2]
-                    testing = []
                     if(test == map2[0]):
                         testing.append(1)
                         for z in range(x+1,len(map1)):
@@ -31,8 +30,9 @@ def TankRush(h1,w1,map1,h2,w2,map2):
                                     testing.append(1)
                                 else:
                                     testing.append(0)
-                                    
-                    if(len(testing) != 0):
-                        testing1.append(testing)
+                            print(testing)            
+                          
+                    
                 pointer += 1
-        print(testing1)
+        
+print(TankRush(3,4,'1234 2345 0987',3,2,'23 34 98'))
