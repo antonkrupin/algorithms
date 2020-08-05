@@ -14,3 +14,6 @@ def MaximumDiscount(quantityOfGoods, prices):
         baseDiscount = sum(prices[-freeGoodsQuantity:])
         print(baseDiscount)
         print(prices)
+        
+
+print(MaximumDiscount(7,[250,400,100,50,25,15,175]))
