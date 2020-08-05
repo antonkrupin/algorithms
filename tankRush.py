@@ -3,13 +3,7 @@ def TankRush(h1,w1,map1,h2,w2,map2):
     #w1, w2 - количество столбцов
     map1 = map1.split()
     map2 = map2.split()
-    splittedMap = []
-    crossingMaps = []
-    positions = []
-    counters = []
-    strokes = []
-    testing = []
-    testing1 = []
+    fullElementsArray = []
     if(h1 <= 0 or h2 <= 0 or w1 <= 0 or w2 <= 0):
         return False
     
@@ -20,19 +14,19 @@ def TankRush(h1,w1,map1,h2,w2,map2):
             pointer = 0
             for y in range(len(map1[x])):
                 if(len(map1[x][pointer:pointer+w2]) == w2):
-                    test = map1[x][pointer:pointer+w2]
-                    if(test == map2[0]):
-                        testing.append(1)
-                        for z in range(x+1,len(map1)):
+                    element = map1[x][pointer:pointer+w2]
+                    elementsArray = []
+                    if(element == map2[0]):
+                        elementsArray.append(element)
+                        for z in range(x+1,len(map2)):
                             r = map1[z][pointer:pointer+w2]
-                            for i in range(1,len(map2)):
-                                if(r == map2[i]):
-                                    testing.append(1)
-                                else:
-                                    testing.append(0)
-                            print(testing)            
-                          
+                            elementsArray.append(r)
+                    if(len(elementsArray) != 0):
+                        fullElementsArray.append(elementsArray)
                     
                 pointer += 1
         
-print(TankRush(3,4,'1234 2345 0987',3,2,'23 34 98'))
+        if(map2 in fullElementsArray):
+            return True
+        else:
+            return False
