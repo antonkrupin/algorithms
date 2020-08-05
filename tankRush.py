@@ -18,9 +18,14 @@ def TankRush(h1,w1,map1,h2,w2,map2):
                     elementsArray = []
                     if(element == map2[0]):
                         elementsArray.append(element)
-                        for z in range(x+1,len(map2)):
-                            r = map1[z][pointer:pointer+w2]
-                            elementsArray.append(r)
+                        if(x+1 < len(map2)):
+                            for z in range(x+1,len(map2)):
+                                r = map1[z][pointer:pointer+w2]
+                                elementsArray.append(r)
+                        else:
+                            if(len(elementsArray) < len(map2)):
+                                r = map1[h2][pointer:pointer+w2]
+                                elementsArray.append(r)
                     if(len(elementsArray) != 0):
                         fullElementsArray.append(elementsArray)
                     
