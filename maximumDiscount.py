@@ -1,5 +1,5 @@
 def MaximumDiscount(quantityOfGoods, prices):
-    sortedPrices = sorted(prices)
+    #sortedPrices = sorted(prices)
     baseDiscount = 0
     if(quantityOfGoods < 3):
         return 0
@@ -11,4 +11,6 @@ def MaximumDiscount(quantityOfGoods, prices):
         
     if(quantityOfGoods > 3):
         freeGoodsQuantity = len(prices)//3
-        baseDiscount = sum(sortedPrices[0:freeGoodsQuantity])
+        baseDiscount = sum(prices[-freeGoodsQuantity:])
+        print(baseDiscount)
+        print(prices)
