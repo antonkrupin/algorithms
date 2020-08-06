@@ -30,5 +30,3 @@ def MaximumDiscount(quantityOfGoods, prices):
             return discount
         else:
             return baseDiscount
-
-print(MaximumDiscount(9,[250,400,50,100,25,175,15,85,500]))
