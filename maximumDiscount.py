@@ -1,7 +1,4 @@
 def MaximumDiscount(quantityOfGoods, prices):
-    sortedPrices = sorted(prices)
-    baseDiscount = 0
-    slicedPrices = []
     if(quantityOfGoods < 3):
         return 0
     if(quantityOfGoods == 3):
@@ -11,16 +8,20 @@ def MaximumDiscount(quantityOfGoods, prices):
         return min(prices)
         
     if(quantityOfGoods > 3):
+        sortedPrices = sorted(prices,reverse = True)
+        baseDiscount = 0
+        slicedPrices = []
+        
         freeGoodsQuantity = len(prices)//3
-        baseDiscount = sum(sortedPrices[:freeGoodsQuantity])
+        baseDiscount = sum(sortedPrices[-freeGoodsQuantity:])
         pointer = 0
         
-        for x in range(len(prices)):
-            p = prices[pointer:pointer+3]
+        for x in range(len(sortedPrices)):
+            p = sortedPrices[pointer:pointer+3]
             if(len(p) == 3):
-                slicedPrices.append(prices[pointer:pointer+3])
+                slicedPrices.append(p)
             pointer += 3
-            
+        
         discount = 0
         
         for x in range(len(slicedPrices)):
