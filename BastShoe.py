@@ -1,14 +1,34 @@
 fullString = []
 changeList = []
+
 undoCounter = []
 undoCounter.append(True)
 
+redoCounter = []
+undoChanges = []
+
 def BastShoe(string):
     operationNumber = string[0:1]
-    endOfLine = string[1:].strip()
+    if(len(string) != 1):
+        if(string[2] == '.' or 
+            string[2] == ',' or
+            string[2] == '-'):
+            endOfLine = string[1:].strip()
+        else:
+            endOfLine = string[1:].strip()
     
     if(operationNumber == '1'):
         undoCounter[0] = True
+        redoCounter.clear()
+        if(len(undoChanges) != 0):
+            if(len(changeList) == 1):
+                undoChangesCopy = undoChanges.copy()
+                changeList.insert(0,undoChangesCopy)
+            else:
+                undoChangesCopy = undoChanges.copy()
+                changeList.insert(len(changeList)-1,undoChangesCopy)
+            undoChanges.clear()
+            
         if(len(fullString) == 0):
             fullString.append(endOfLine)
             changeList.append([operationNumber,endOfLine])
@@ -18,6 +38,17 @@ def BastShoe(string):
     
     if(operationNumber == '2'):
         undoCounter[0] = True
+        redoCounter.clear()
+        
+        if(len(undoChanges) != 0):
+            if(len(changeList) == 1):
+                undoChangesCopy = undoChanges.copy()
+                changeList.insert(0,undoChangesCopy)
+            else:
+                undoChangesCopy = undoChanges.copy()
+                changeList.insert(len(changeList)-1,undoChangesCopy)
+            undoChanges.clear()
+            
         if(int(endOfLine) >= len(fullString[0])):
             changeList.append([operationNumber,fullString[0]])
             fullString[0] = ''
@@ -40,32 +71,39 @@ def BastShoe(string):
             
         for x in reversed(range(len(changeList)-1)):
             if(changeList[x][1] != 'undo'):
-                if(changeList[x][0] == '2'):
-                    undoString = fullString[0] + changeList[x][1]
-                    fullString[0] = undoString
-                    changeList.pop(-2)
-                    return fullString[0]
-                if(changeList[x][0] == '1'):
-                    undoString = fullString[0][:len(fullString[0])-len(changeList[x][1])]
-                    fullString[0] = undoString
-                    changeList.pop(-2)
-                    return fullString[0]
+                t = changeList[x].copy()
+                undoChanges.append(t)
+                changeList.pop(-2)
             else:
                 break
-    
-    #print(changeList)
+            
+        for x in range(len(undoChanges)):
+            if(undoChanges[x][0][0] == '1' and not 'u' in undoChanges[x][0]):
+                undoString = fullString[0][:len(fullString[0])-len(undoChanges[x][1])]
+                fullString[0] = undoString
+                undoChanges[x][0] = undoChanges[x][0][0] + 'u'
+                return fullString[0]
+            
+            if(undoChanges[x][0][0] == '2' and not 'u' in undoChanges[x][0]):
+                undoString = fullString[0] + undoChanges[x][1]
+                fullString[0] = undoString
+                undoChanges[x][0] = undoChanges[x][0][0] + 'u'
+                return fullString[0]
+            
+    if(operationNumber == '5'):
+        if(len(undoChanges) > 0):
+            for x in reversed(range(len(undoChanges))):
+                if(undoChanges[x][0][0] == '1' and 'u' in undoChanges[x][0]):
+                    redoString = fullString[0] + undoChanges[x][1]
+                    fullString[0] = redoString
+                    undoChanges[x][0] = undoChanges[x][0][0] + 'r'
+                    return fullString[0]
+                if(undoChanges[x][0][0] == '2' and 'u' in undoChanges[x][0]):
+                    redoString = fullString[0][:len(fullString[0])-len(undoChanges[x][1])]
+                    fullString[0] = redoString
+                    undoChanges[x][0] = undoChanges[x][0][0] + 'r'
+                    return fullString[0]
+        else:
+            return fullString[0]
+                
     return fullString[0]
- 
-print(BastShoe('1 Привет'))
-print(BastShoe('1 , Мир!'))
-print(BastShoe('1  ++'))
-print(BastShoe('2 2'))
-print(BastShoe('1 Приветище'))
-print(BastShoe('4'))
-print(BastShoe('1 Доброе утро!'))
-print(BastShoe('2 2'))
-print(BastShoe('4'))
-print(BastShoe('4'))
-print(BastShoe('4'))
-print(BastShoe('4'))
-print(BastShoe('1 !!!'))
