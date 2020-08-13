@@ -70,7 +70,7 @@ def BastShoe(string):
         
         if(operationNumber == '3'):
             undoCounter[0] = True
-            if(int(endOfLine) < 0 or int(endOfLine) > len(fullString[0])):
+            if(int(endOfLine) < 0 or int(endOfLine) >= len(fullString[0])):
                 return ''
             else:
                 return fullString[0][int(endOfLine)]
