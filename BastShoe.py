@@ -9,12 +9,20 @@ undoChanges = []
 
 def BastShoe(string):
     operationNumber = string[0:1]
+    
+    if(len(string) == 1):
+        if(string[0] != '4' and string[0] != '5'):
+            return fullString[0]
+    """        
     if(string[1:2] != ' '):
-        return fullString[0]
+        if(string[1:2] != '4' and string[1:2] != '5'):
+            print(string[1:2])
+            print('dsfs')
+            return fullString[0]
     else:
         if(len(string) == 2):
             return fullString[0]
-            
+    """        
     if((operationNumber != '1') and (operationNumber != '2')
         and (operationNumber != '3') and (operationNumber != '4')
         and (operationNumber != '5')):
