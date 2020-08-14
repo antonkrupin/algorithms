@@ -36,8 +36,7 @@ def BiggerGreater(word):
             wordsBigger.append(words[x])
     
     if(wordsBigger == []):
-        test = ''
-        return test
+        return ""
     else:
         for x in range(len(wordsBigger)):
             smallWord = wordsBigger[x]
