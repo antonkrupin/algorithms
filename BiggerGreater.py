@@ -1,7 +1,9 @@
-words = []
-wordsBigger = []
 def BiggerGreater(word):
+    words = []
+    wordsBigger = []
     listWord = list(word)
+    emptyString = ''
+    smallWord = ''
     
     for x in range(len(listWord)):
         for y in range(len(listWord)):
@@ -36,7 +38,7 @@ def BiggerGreater(word):
             wordsBigger.append(words[x])
     
     if(wordsBigger == []):
-        return ""
+        return emptyString
     else:
         for x in range(len(wordsBigger)):
             smallWord = wordsBigger[x]
