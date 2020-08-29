@@ -1,6 +1,6 @@
 def MatrixTurn(matrix, matrixHeight, matrixLength, turns):
     martixArray = []
-    print(matrix)
+    
     if(matrixHeight >= matrixLength):
         numberOfCircles = matrixLength // 2
     else:
