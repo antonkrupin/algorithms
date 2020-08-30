@@ -38,5 +38,9 @@ def MatrixTurn(matrix, matrixHeight, matrixLength, turns):
                         martixArray[x-1].pop(-(i+1))
             i += 1
         turnCounter += 1
-        
+    
+    for x in range(len(martixArray)):
+        for y in range(len(martixArray[x])):
+            martixArray[x][y] = int(martixArray[x][y])
+    
     return martixArray   
