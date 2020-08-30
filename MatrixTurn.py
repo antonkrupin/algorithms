@@ -1,4 +1,5 @@
-def MatrixTurn(matrix, matrixHeight, matrixLength, turns):
+def MatrixTurn(Matrix, matrixHeight, matrixLength, turns):
+    
     martixArray = []
    
     if(matrixHeight >= matrixLength):
@@ -6,8 +7,8 @@ def MatrixTurn(matrix, matrixHeight, matrixLength, turns):
     else:
         numberOfCircles = matrixHeight // 2
     
-    for x in range(len(matrix)):
-        martixArray.append(list(matrix[x]))
+    for x in range(len(Matrix)):
+        martixArray.append(list(Matrix[x]))
 
     turnCounter = 0
     
@@ -38,9 +39,9 @@ def MatrixTurn(matrix, matrixHeight, matrixLength, turns):
                         martixArray[x-1].pop(-(i+1))
             i += 1
         turnCounter += 1
-        
-    for x in range(len(martixArray)):
-        for y in range(len(martixArray[x])):
-            martixArray[x][y] = int(martixArray[x][y])
     
-    return martixArray   
+    for x in range(len(martixArray)):
+        martixArray[x] = ''.join(martixArray[x]) 
+
+    Matrix = martixArray
+    return Matrix
