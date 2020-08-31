@@ -43,5 +43,5 @@ def MatrixTurn(Matrix, matrixHeight, matrixLength, turns):
     for x in range(len(martixArray)):
         martixArray[x] = ''.join(martixArray[x]) 
 
-    Matrix = martixArray
-    return Matrix
+    for x in range(len(martixArray)):
+        Matrix[x] = martixArray[x]
