@@ -1,7 +1,9 @@
 def Football(numbers, n):
     sortedNumbers = list(numbers)
     sortedNumbers.sort()
-    
+    if(numbers == sortedNumbers):
+        return False
+        
     def flatten(lst):
         while lst:
             sublist = lst.pop(0)
