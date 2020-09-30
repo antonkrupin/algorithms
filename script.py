@@ -5,12 +5,10 @@ def checkSubString(string, subString):
         if string[i] == subString[0]:
             counter += 1
             for j in range(1,len(subString)):
-                if string[i + j] == subString[j]:
-                    counter += 1
+                if i + j < len(string):
+                    if string[i + j] == subString[j]:
+                        counter += 1
         if counter == len(subString):
             return True
     
     return False
-            
-
-print(checkSubString('hello world','sss'))
