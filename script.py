@@ -1,5 +1,4 @@
 def checkSubString(string, subString):
-    
     for i in range(len(string)):
         counter = 0
         if string[i] == subString[0]:
@@ -10,5 +9,4 @@ def checkSubString(string, subString):
                         counter += 1
         if counter == len(subString):
             return True
-    
     return False
