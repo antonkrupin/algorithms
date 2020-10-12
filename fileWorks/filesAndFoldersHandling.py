@@ -5,7 +5,6 @@ def getDirectoryFilesAndFolders(mainDirectoryPath):
     files = []
     
     if os.path.isdir(mainDirectoryPath):
-
         for i in os.walk(mainDirectoryPath):
             if len(i[1]) != 0:
                 for j in i[1]:
@@ -13,9 +12,9 @@ def getDirectoryFilesAndFolders(mainDirectoryPath):
             if len(i[2]) != 0:
                 for j in i[2]:
                     files.append(j)
-        return folders, files
+        return [folders, files, 1]
     else:
-        return -1
+        return [folders, files, -1]
 
 
 def deleteDirectory(mainDirectoryPath):
@@ -32,7 +31,5 @@ def deleteDirectory(mainDirectoryPath):
                     filePath = i[0] + '\\' + y
                     os.remove(filePath)
                 os.rmdir(mainDirectoryPath)
-            
+                return 1
 
-#deleteDirectory('E:\\algorithms-master\\fileworks')
-print(getDirectoryFilesAndFolders('E:\\algorithms-master\\fileworks'))
