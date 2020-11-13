@@ -1,16 +1,10 @@
 def findSecondMaxNumber(numbers):
     if len(numbers) >= 2:
         numbers.sort()
-        if numbers[0] > numbers[1]:
-            max1 = numbers[0]
-            max2 = numbers[1]
-        else:
-            max1 = numbers[1]
-            max2 = numbers[0]
-
-        numbers.pop(0)
-        numbers.pop(0)
         
+        max1 = numbers[0]
+        max2 = numbers[0]
+                
         def recursion(max1, max2):
             if numbers != []:
                 if numbers[0] > max1:
@@ -31,4 +25,4 @@ def findSecondMaxNumber(numbers):
     else:
         return numbers[0]
 
-print(findSecondMaxNumber([23,12,23,17]))
+print(findSecondMaxNumber([15,15,15,3,7,12,13,15,15,15,11,12]))
