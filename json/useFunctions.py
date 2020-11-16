@@ -1,4 +1,6 @@
 import jsonFunctions
 
-print(jsonFunctions.originalTasks())
 
+jsonFunctions.saveJSONtoFile()
+jsonFunctions.uniqueUsers()
+jsonFunctions.originalTasks()
