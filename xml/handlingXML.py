@@ -18,40 +18,39 @@ def printNodesValues():
     except Exception:
         return -1
 
+
 def tagValues(tag, file):
     try:
         xml1 = ETree.parse(file)
         root = xml1.getroot()
-
-        def recursion(elementTree):
-            for i in range(len(elementTree)):
-                if len(elementTree[i]) == 0:
-                    if elementTree[i].tag == tag:
-                        print(elementTree[i].text)
-                else:
-                    recursion(elementTree[i])
-        recursion(root)
+        recursionTagValues(root,tag)
         return [tag, 1]
     except Exception:
         return [tag, -1]
+    
+def recursionTagValues(elementTree, tag):
+    for i in range(len(elementTree)):
+        if len(elementTree[i]) == 0:
+            if elementTree[i].tag == tag:
+                print(elementTree[i].text)
+        else:
+            recursionTagValues(elementTree[i], tag)
 
 
 def documentNodesWithAttribute(attribute, file):
     try:
         xml1 = ETree.parse(file)
         root = xml1.getroot()
-        nodes = 0
-
-        def recursion(elementTree):
-            nonlocal nodes
-            for i in range(len(elementTree)):
-                if len(elementTree[i]) == 0:
-                    if attribute in elementTree[i].attrib.keys():
-                        nodes += 1
-                else:
-                    recursion(elementTree[i])
-            return nodes
-
-        return [recursion(root), 1]
+        nodes = []
+        return [recursionDocumentNodes(root,attribute,nodes), 1]
     except Exception:
         return [0, -1]
+
+def recursionDocumentNodes(elementTree,attribute,nodes):
+    for i in range(len(elementTree)):
+        if len(elementTree[i]) == 0:
+            if attribute in elementTree[i].attrib.keys():
+                nodes.append(1)
+        else:
+            recursionDocumentNodes(elementTree[i],attribute,nodes)
+    return sum(nodes)
