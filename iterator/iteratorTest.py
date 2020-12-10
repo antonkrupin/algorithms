@@ -1,6 +1,7 @@
 import unittest
-
 from random import randint
+
+
 from iterator import ListWithConstructor
 from iterator import ListWithConstructorInfinite
 
