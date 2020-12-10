@@ -1,4 +1,6 @@
 import random
+
+
 class ListWithConstructor:
     def __init__(self, start):
         self.start = start
