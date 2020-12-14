@@ -72,16 +72,14 @@ class ListWithConstructorInfiniteTest(unittest.TestCase):
         self.assertEqual(exampleSequence, resultSequence)
 
         resultSequence = []
-        counter = 0
         for i in ListWithConstructorInfinite(10, True):
-            if counter < 10:
-                if len(resultSequence) != len(exampleSequence):
-                    resultSequence.append(i)
-                else:
-                    self.assertEqual(exampleSequence, resultSequence)
-                    counter += 1
+            if len(resultSequence) < len(exampleSequence)*5:
+                resultSequence.append(i)
             else:
                 break
+
+        for i in range(0,len(resultSequence),len(exampleSequence)):
+            self.assertEqual(resultSequence[i:i+len(exampleSequence)], exampleSequence)
 
     def test_randomElementsQuantity(self):
         randomNumber = randint(10,100)
@@ -97,16 +95,14 @@ class ListWithConstructorInfiniteTest(unittest.TestCase):
         self.assertEqual(exampleSequence, resultSequence)
     
         resultSequence = []
-        counter = 0
         for i in ListWithConstructorInfinite(randomNumber, True):
-            if counter < 10:
-                if len(resultSequence) != len(exampleSequence):
-                    resultSequence.append(i)
-                else:
-                    self.assertEqual(exampleSequence, resultSequence)
-                    counter += 1
+            if len(resultSequence) < len(exampleSequence)*5:
+                resultSequence.append(i)
             else:
                 break
+
+        for i in range(0,len(resultSequence),len(exampleSequence)):
+            self.assertEqual(resultSequence[i:i+len(exampleSequence)], exampleSequence)
 
     def test_randomElementsBigQuantity(self):
         randomNumber = randint(10000, 1000000)
@@ -122,16 +118,14 @@ class ListWithConstructorInfiniteTest(unittest.TestCase):
         self.assertEqual(exampleSequence, resultSequence)
 
         resultSequence = []
-        counter = 0
         for i in ListWithConstructorInfinite(randomNumber, True):
-            if counter < 10:
-                if len(resultSequence) != len(exampleSequence):
-                    resultSequence.append(i)
-                else:
-                    self.assertEqual(exampleSequence, resultSequence)
-                    counter += 1
+            if len(resultSequence) < len(exampleSequence)*5:
+                resultSequence.append(i)
             else:
                 break
+
+        for i in range(0,len(resultSequence),len(exampleSequence)):
+            self.assertEqual(resultSequence[i:i+len(exampleSequence)], exampleSequence)
     
     def test_cycleRandomElementsBigQuantity(self):
         for i in range(1,5):
@@ -147,16 +141,14 @@ class ListWithConstructorInfiniteTest(unittest.TestCase):
             self.assertEqual(exampleSequence, resultSequence)
 
             resultSequence = []
-            counter = 0
             for i in ListWithConstructorInfinite(randomNumber, True):
-                if counter < 10:
-                    if len(resultSequence) != len(exampleSequence):
-                        resultSequence.append(i)
-                    else:
-                        self.assertEqual(exampleSequence, resultSequence)
-                        counter += 1
+                if len(resultSequence) < len(exampleSequence)*5:
+                    resultSequence.append(i)
                 else:
                     break
+
+            for i in range(0,len(resultSequence),len(exampleSequence)):
+                self.assertEqual(resultSequence[i:i+len(exampleSequence)], exampleSequence)
 
 if __name__ == '__main__':
     unittest.main()
