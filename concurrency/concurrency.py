@@ -9,6 +9,8 @@ def sumWIthDividingIntoProcesses(elements, processorsQuantity):
         functions = []
         dividedElements = []
         resultSum = 0
+        threadNames = []
+        isAliveCounter = 0
 
         for i in range(processorsQuantity):
             dividedElements.append([])
@@ -21,11 +23,17 @@ def sumWIthDividingIntoProcesses(elements, processorsQuantity):
         for i in functions:
             name = 'f' + str(i)
             name = Thread(target=sumElements, name=f'Thread {str(i)}', args=(i,dividedElements[i], results))
-            name.start()      
-
+            name.start()            
+            threadNames.append(name)
+        
+        while isAliveCounter != len(threadNames):
+            for i in threadNames:
+                if i.is_alive() == False:
+                    isAliveCounter += 1
+        
         for key in results:
             resultSum += results[key]
-
+                
         return [resultSum, 1]
     else:
         return [0, -1]
@@ -35,4 +43,3 @@ def sumElements(id, elements, results):
     for i in elements:
         sum += i
     results[id] = sum
-
