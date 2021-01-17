@@ -14,17 +14,18 @@ s.bind((HOST, PORT))
 s.listen(3)
 
 print('Start Server')
+
 while True:
     conn, addr_tosend = s.accept()
     data = conn.recvfrom(1024)
-    print(data[0].decode('utf-8'))
     if addr_tosend not in clients:
         clients.append(addr_tosend)
-    with conn:
-        while True:
-            for client in clients:
-                #if client == addr_tosend:
-                    #continue
-                data = conn.recv(1024)
-                print('Client send data: ', data.decode('utf-8'))
-                conn.sendto(data, client)
+    print(data[0].decode('utf-8'))
+    #with conn:
+    while True:
+        for client in clients:
+            #if client == addr_tosend:
+                #continue
+            data = conn.recv(1024)
+            print('Client send data: ', data.decode('utf-8'))
+            conn.sendto(data, client)
