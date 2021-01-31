@@ -60,9 +60,11 @@ class LinkedList:
             if headNode is not None:
                 if headNode.value == val:
                     self.head = headNode.next
-                    headNode = None
-                    return
-
+                    #headNode = None
+                    prevNode = headNode
+                    headNode = headNode.next
+                    #return
+            
             while headNode is not None:
                 if headNode.value == val:
                     prevNode.next = headNode.next
@@ -88,7 +90,7 @@ for i in test:
 
 s_list.print_all_nodes()
 print('____')
-s_list.delete(2, all=True)
+s_list.delete(6, all=True)
 s_list.print_all_nodes()
 #s_list.delete(13, all=True)
 #print('______')
