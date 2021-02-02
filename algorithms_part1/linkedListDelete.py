@@ -21,45 +21,39 @@ class LinkedList:
             print(node.value)
             node = node.next
 
+    
     def delete(self, val, all=False):
-        if self.head is None:
+        
+        currentNode = self.head
+        
+        if currentNode is None:
             return
         
-        if self.head.value == val:
-            self.head = self.head.next
-            
-        prevNode = self.head
-        n = self.head
-
-        while n is not None:
-            if n.value == val:
-                n = n.next
-                continue
-            print(n.value)
-            prevNode = n
-            n = n.next
-
-            
-            #headNode = headNode.next
-
-        """
-        n = self.head
-        while n.next is not None:
-            if n.next.value == val:
+        if currentNode is not None:
+            if currentNode.value == val:
                 self.head = self.head.next
-            n = n.next
-        """
+                currentNode = self.head
+
+        previousNode = currentNode
+
+        while currentNode is not None:
+            if currentNode.value == val:
+                previousNode.next = currentNode.next
+                currentNode = currentNode.next
+                continue
+            previousNode = currentNode
+            currentNode = currentNode.next
         
-            
-
-#test = [2,11,1,51,6,1,5,1,1,1,1,1,1]
-test = [2,2,5,2,2,4,3,2,2,6]
-
+test = [2,2,2,2,2,2,2,2,2,2,2,2,11,1,51,6,1,5,1,1,2,2,2,2,2,2,1,1,1,1,2,2,2,2]
+#test = [2,2,2,2,2,2,2,2,2,2,2,2,2]
+#test = [2,2,5,2,2,4,3,2,2,6]
+#test = [1,1,1,1,2,2,2,2,2,2,2,2,2,1]
+#test = [5,4,5,5,5,5,5,5,5,5,5,5,5]
 s_list = LinkedList()
 
 for i in test:
     s_list.add_in_tail(Node(i))
-
-print('_______')
-print(s_list.delete(2, all=True))
+s_list.print_all_nodes()
+print('_____')
+s_list.delete(2)
 s_list.print_all_nodes()
