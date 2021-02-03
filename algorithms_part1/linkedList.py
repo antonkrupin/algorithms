@@ -104,17 +104,3 @@ class LinkedList:
                 startNode.next = nodeForAppend
             startNode = startNode.next
 
-#test = [2,2,2,2,2,2,2,2,2,2,2,2,11,1,51,6,1,5,1,1,2,2,2,2,2,2,1,1,1,1,2,2,2,2]
-#test = [2,2,2,2,2,2,2,2,2,2,2,2,2]
-test = [2,5,2,24,3,2,2,6]
-#test = [2,2,5,2,4]
-#test = [1,1,1,1,2,2,2,2,2,2,2,2,2,1]
-#test = [5,4,5,5,5,5,5,5,5,5,5,5,5]
-s_list = LinkedList()
-
-for i in test:
-    s_list.add_in_tail(Node(i))
-s_list.print_all_nodes()
-print('_____')
-s_list.delete(6)
-s_list.print_all_nodes()
