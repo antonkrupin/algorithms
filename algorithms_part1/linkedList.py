@@ -39,7 +39,7 @@ class LinkedList:
         if nodesList != []:
             return nodesList
         else:
-            return None
+            return []
 
     def delete(self, val, all=False):
         headNode = self.head
