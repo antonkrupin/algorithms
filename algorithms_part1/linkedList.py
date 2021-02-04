@@ -29,45 +29,6 @@ class LinkedList:
             node = node.next
         return None
 
-    def delete(self, val, all=False):
-        headNode = self.head
-
-        if all == False:
-            if headNode is not None:
-                if headNode.value == val:
-                    self.head = headNode.next
-                    headNode = None
-                    return
-
-            while headNode is not None:
-                if headNode.value == val:
-                    break
-                prevNode = headNode
-                headNode = headNode.next
-
-            if headNode == None:
-                return
-
-            prevNode.next = headNode.next
-            headNode = None
-        else:
-            if self.head == None:
-                return 
-
-            while self.head is not None and self.head.value == val: 
-                self.head = self.head.next
-
-            if self.head is not None: 
-                current = self.head
-                while current.next is not None: 
-                    if current.next.value == val: 
-                        current.next = current.next.next 
-                    else:
-                        current = current.next
-
-    def clean(self):
-        self.__init__()
-        
     def find_all(self, val):
         headNode = self.head
         nodesList = []
@@ -80,6 +41,55 @@ class LinkedList:
         else:
             return None
 
+    def delete(self, val, all=False):
+        headNode = self.head
+
+        if all == False:
+            if headNode is not None:
+                if headNode.value == val:
+                    self.head = headNode.next
+                    headNode = None
+                    if self.head == None:
+                        self.tail = None
+                    return
+
+            if headNode == None:
+                self.tail = None
+                return
+
+            while headNode is not None:
+                if headNode.value == val:
+                    break
+                prevNode = headNode
+                headNode = headNode.next
+
+            if headNode == None:
+                return
+
+            prevNode.next = headNode.next
+            headNode = None
+            self.tail = prevNode
+        else:
+            if self.head == None:
+                return 
+
+            while self.head is not None and self.head.value == val: 
+                self.head = self.head.next
+                if self.head == None:
+                    self.tail = None
+
+            if self.head is not None: 
+                current = self.head
+                while current.next is not None: 
+                    if current.next.value == val: 
+                        current.next = current.next.next 
+                    else:
+                        current = current.next
+                self.tail = current
+
+    def clean(self):
+        self.__init__()
+        
     def len(self):
         length = 0
         node = self.head
