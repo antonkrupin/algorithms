@@ -103,6 +103,8 @@ class LinkedList:
         
         if self.head == None:
             self.head = Node(newNode)
+            self.tail = self.head
+            return
 
         if afterNode == None:
             self.head = Node(newNode)
@@ -115,4 +117,7 @@ class LinkedList:
                 nextNodeLink = startNode.next
                 nodeForAppend.next = nextNodeLink
                 startNode.next = nodeForAppend
+                if startNode.next.next == None:
+                    self.tail = nodeForAppend
             startNode = startNode.next
+            
