@@ -101,6 +101,9 @@ class LinkedList:
     def insert(self, afterNode, newNode):
         startNode = self.head
         
+        if self.head == None:
+            self.head = Node(newNode)
+
         if afterNode == None:
             self.head = Node(newNode)
             self.head.next = startNode
@@ -113,4 +116,3 @@ class LinkedList:
                 nodeForAppend.next = nextNodeLink
                 startNode.next = nodeForAppend
             startNode = startNode.next
-
