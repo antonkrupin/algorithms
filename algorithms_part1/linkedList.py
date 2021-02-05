@@ -99,27 +99,24 @@ class LinkedList:
         return length
 
     def insert(self, afterNode, newNode):
-        startNode = self.head
-        
-        if self.head == None:
-            self.head = Node(newNode)
-            test = self.head
-            self.tail = test
-            return
-
         if afterNode == None:
-            self.head = Node(newNode)
-            self.head.next = startNode
-            return 
-
-        while startNode is not None:
-            if startNode.value == afterNode:
-                nodeForAppend = Node(newNode)
-                nextNodeLink = startNode.next
-                nodeForAppend.next = nextNodeLink
-                startNode.next = nodeForAppend
-                if startNode.next.next == None:
-                    self.tail = nodeForAppend
-                    return
-            startNode = startNode.next
+            if self.head == None:
+                self.head = newNode
+                self.tail = newNode
+                newNode.next = None
+            else:
+                newNode.next = self.head
+                self.head = newNode
+        else:
+            node = self.head
+            while node != None:
+                if node.value == afterNode.value:
+                    if node.next == None:
+                        node.next = newNode
+                        self.tail = newNode
+                        newNode.next = None
+                    else:
+                        newNode.next = node.next
+                        node.next = newNode
+                node = node.next
             
