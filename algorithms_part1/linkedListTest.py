@@ -73,6 +73,29 @@ class find(unittest.TestCase):
             self.assertIsNotNone(s_list_example.find(value))
 
 
+class find_all(unittest.TestCase):
+    def test_find_in_empty_list(self):
+        s_list_example = LinkedList()
+        self.assertEqual(s_list_example.find_all(2), [])
+
+    def test_find_in_list_with_one_node(self):
+        s_list_example = LinkedList()
+        s_list_example.add_in_tail(Node(34))
+
+        self.assertEqual(s_list_example.find_all(Node(2)), [])
+        self.assertEqual(len(s_list_example.find_all(34)), 1)
+
+    def test_find_in_list_with_many_nodes(self):
+        s_list_example = LinkedList()
+        list_elements = [34, 45,1, 2,34, 6,8,12,34]
+        for i in list_elements:
+            s_list_example.add_in_tail(Node(i))
+
+        self.assertEqual(s_list_example.find_all(Node(555)), [])
+        self.assertEqual(len(s_list_example.find_all(34)), 3)
+        self.assertEqual(len(s_list_example.find_all(45)), 1)
+
+
 class delete(unittest.TestCase):
     def test_delete_from_short_list(self):
         s_list_example = LinkedList()
@@ -108,15 +131,9 @@ class delete(unittest.TestCase):
 
 
 class insert(unittest.TestCase):
-    def test_insert_in_empty_list(self):
-        s_list = LinkedList()
-        s_list.insert(2,2)
-        self.assertEqual(s_list.len(),1)
-        self.assertEqual(s_list.head, s_list.tail)
-
     def test_insert_in_empty_list_with_none(self):
         s_list = LinkedList()
-        s_list.insert(None,2)
+        s_list.insert(None,Node(2))
         self.assertEqual(s_list.len(),1)
         self.assertEqual(s_list.head, s_list.tail)
 
@@ -129,15 +146,15 @@ class insert(unittest.TestCase):
         s_list_example.add_in_tail(Node(11))
         s_list_example.add_in_tail(Node(77))
 
-        s_list_example.insert(5,2)
+        s_list_example.insert(Node(5),Node(2))
 
         self.assertEqual(s_list_example.head.next.value, 2)
         
-        s_list_example.insert(None, 8)
+        s_list_example.insert(None, Node(8))
 
         self.assertEqual(s_list_example.head.value, 8)
 
-        s_list_example.insert(77, 99)
+        s_list_example.insert(Node(77), Node(99))
 
         self.assertEqual(s_list_example.tail.value, 99)
 
@@ -145,7 +162,7 @@ class insert(unittest.TestCase):
         s_list_example = LinkedList()
         s_list_example.add_in_tail(Node(5))
 
-        s_list_example.insert(5,2)
+        s_list_example.insert(Node(5),Node(2))
 
         self.assertEqual(s_list_example.len(), 2)
         self.assertEqual(s_list_example.head.value,5)
@@ -155,7 +172,7 @@ class insert(unittest.TestCase):
         s_list_example = LinkedList()
         s_list_example.add_in_tail(Node(5))
 
-        s_list_example.insert(None, 2)
+        s_list_example.insert(None, Node(2))
 
         self.assertEqual(s_list_example.len(), 2)
         self.assertEqual(s_list_example.head.value,2)
