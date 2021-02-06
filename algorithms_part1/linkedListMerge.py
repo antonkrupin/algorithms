@@ -14,18 +14,6 @@ def mergeLists(list1, list2):
     else:
         return [sumOfElementsList ,-1]
 
-s_list = LinkedList()
-s_list1 = LinkedList()
-
-#test = [1,2,3,4,5,0]
-#test1 = [2,3,4,5,6,11]
-#for i in test:
-    #s_list.add_in_tail(Node(i))
-
-#for i in test1:
-    #s_list1.add_in_tail(Node(i))
-
-print(mergeLists(s_list, s_list1))
 
 
 
