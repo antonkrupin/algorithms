@@ -22,7 +22,19 @@ class LinkedList2:
     def print_all_nodes(self):
         node = self.head
         while node is not None:
-            print(node.value)
+            #dont delete
+            #print(node.value)
+            
+            if self.head.prev is not None:
+                print('self head prev', self.head.prev.value)
+            print('node value', node.value)
+            print('tail', self.tail.value)
+            if node.prev is not None:
+                print('node prev value', node.prev.value)
+            else:
+                print('nodeprev', node.prev)
+            print('_______________')
+            
             node = node.next
 
     def find(self, val):
@@ -104,12 +116,17 @@ class LinkedList2:
                 newNode.next = None
                 newNode.prev = None
             else:
-                self.head.prev = newNode
-                newNode.next = self.head
-                self.head = newNode
+                print('self head', self.head.prev)
                 #self.tail.next = newNode
                 #self.tail.prev = self.tail
                 #self.tail = newNode
+                
+                oldTail = self.tail
+                
+                self.tail = newNode
+                self.tail.prev = oldTail
+                self.tail.next = None
+                oldTail.next = newNode
         else:
             node = self.head
             while node is not None:
