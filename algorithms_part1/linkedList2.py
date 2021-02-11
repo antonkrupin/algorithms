@@ -135,9 +135,13 @@ class LinkedList2:
             while node is not None:
                 if node.value == afterNode.value:
                     if node.next == None:
-                        self.tail.next = newNode
-                        newNode.prev = self.tail
+                        node.next = newNode
+                        node.prev = self.tail
                         self.tail = newNode
+                        newNode.next = None
+                        #self.tail.next = newNode
+                        #newNode.prev = self.tail
+                        #self.tail = newNode
                         """
                         node.next = newNode
                         newNode.prev = node
