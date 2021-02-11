@@ -104,18 +104,17 @@ class LinkedList2:
                 self.head.next = None
                 self.head.prev = None
             else:
-                oldTail = self.tail
+                self.tail.next = newNode
+                newNode.prev = self.tail
                 self.tail = newNode
-                self.tail.prev = oldTail
-                self.tail.next = None
-                oldTail.next = newNode
         else:
             node = self.head
             while node is not None:
                 if node.value == afterNode.value:
                     if node.next == None:
                         node.next = newNode
-                        node.prev = self.tail
+                        #node.prev = self.tail
+                        newNode.prev = node
                         self.tail = newNode
                         newNode.next = None
                     else:
