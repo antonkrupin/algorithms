@@ -18,13 +18,12 @@ class LinkedList2:
             self.tail.next = item
             item.prev = self.tail
         self.tail = item
-        
-    """        
+       
     def print_all_nodes(self):
         node = self.head
         while node is not None:
             print(node.value)
-            
+            """
             if node.prev is not None:
                 print('node prev value', node.prev.value)
             else:
@@ -34,9 +33,9 @@ class LinkedList2:
                 print('node next value', node.next.value)
             else:
                 print('node next value', node.next)
-            
+            """
             node = node.next
-    """
+    
     def find(self, val):
         node = self.head
         while node is not None:
@@ -116,20 +115,35 @@ class LinkedList2:
                 self.head.next = None
                 self.head.prev = None
             else:
+                self.tail.next = newNode
+                newNode.prev = self.tail
+                self.tail = newNode
+                """
                 oldTail = self.tail
                 self.tail = newNode
                 self.tail.prev = oldTail
                 self.tail.next = None
                 oldTail.next = newNode
+                """
         else:
+            """
+            self.tail.next = item
+            item.prev = self.tail
+            self.tail = item
+            """
             node = self.head
             while node is not None:
                 if node.value == afterNode.value:
                     if node.next == None:
+                        self.tail.next = newNode
+                        newNode.prev = self.tail
+                        self.tail = newNode
+                        """
                         node.next = newNode
                         newNode.prev = node
                         newNode.next = None
                         self.tail = newNode
+                        """
                     else:
                         newNode.next = node.next
                         newNode.prev = node
