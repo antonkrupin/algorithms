@@ -84,3 +84,25 @@ class LinkedList2:
                             node.prev.next = node.next
                             node.next.prev = node.prev
                 node = node.next
+
+    def clean(self):
+        self.head = None
+        self.tail = None
+
+    def len(self):
+        length = 0
+        while self.head is not None:
+            length += 1
+            self.head = self.head.next
+        return length
+    
+    def add_in_head(self, item):
+        if self.head is None:
+            self.head = item
+            item.prev = None
+            item.next = None
+        else:
+            headElem = self.head
+            self.head = item
+            self.head.prev = None
+            self.head.next = headElem
