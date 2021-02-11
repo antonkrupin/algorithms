@@ -106,7 +106,21 @@ class insert(unittest.TestCase):
         self.assertEqual(s_list.head.prev, None)
         self.assertEqual(s_list.head.next, None)
 
-    
+    def test_insert_equal_number(self):
+        s_list = LinkedList2()
+        s_list.add_in_tail(Node(1))
+        s_list.add_in_tail(Node(2))
+        s_list.add_in_tail(Node(4))
+        s_list.add_in_tail(Node(5))
+
+        s_list.insert(Node(1), Node(1))
+        self.assertNotEqual(s_list.head, s_list.head.next)
+
+        s_list.insert(Node(5), Node(5))
+        self.assertNotEqual(s_list.tail, s_list.tail.prev)
+
+
+
 class add_in_head(unittest.TestCase):
     def test_add_in_head(self):
         s_list = LinkedList2()
