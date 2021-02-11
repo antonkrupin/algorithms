@@ -120,7 +120,6 @@ class insert(unittest.TestCase):
         self.assertNotEqual(s_list.tail, s_list.tail.prev)
 
 
-
 class add_in_head(unittest.TestCase):
     def test_add_in_head(self):
         s_list = LinkedList2()
