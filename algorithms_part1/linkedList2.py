@@ -95,7 +95,7 @@ class LinkedList2:
             length += 1
             self.head = self.head.next
         return length
-
+    """
     def insert(self, afterNode, newNode):
         if afterNode == None:
             if self.head == None:
@@ -123,7 +123,7 @@ class LinkedList2:
                         node.next = newNode
                         node.next.prev = newNode
                 node = node.next
-    
+    """
     def add_in_head(self, item):
         if self.head is None:
             self.head = item
