@@ -269,6 +269,34 @@ class delete(unittest.TestCase):
         self.assertEqual(s_list.head.value, 1)
         self.assertEqual(s_list.tail.value, 1)
 
+class add_in_empty_list(unittest.TestCase):
+    def test_add_and_insert_in_tail_for_empty_list(self):
+        #add in tail
+        s_list = LinkedList2()
+        s_list.add_in_tail(Node(11))
+        #check head and tail
+        self.assertEqual(s_list.head.value, 11)
+        self.assertEqual(s_list.tail.value, 11)
+        self.assertEqual(s_list.head.prev, None)
+        self.assertEqual(s_list.tail.next, None)
+
+        #insert in list
+        s_list = LinkedList2()
+        s_list.insert(None, Node(11))
+        #check head and tail
+        self.assertEqual(s_list.head.value, 11)
+        self.assertEqual(s_list.tail.value, 11)
+        self.assertEqual(s_list.head.prev, None)
+        self.assertEqual(s_list.tail.next, None)
+
+        #add in head
+        s_list = LinkedList2()
+        s_list.add_in_head(Node(11))
+        #check head and tail
+        self.assertEqual(s_list.head.value, 11)
+        self.assertEqual(s_list.tail.value, 11)
+        self.assertEqual(s_list.head.prev, None)
+        self.assertEqual(s_list.tail.next, None)
 
 if __name__ == '__main__':
     unittest.main()
