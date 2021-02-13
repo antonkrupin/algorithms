@@ -44,6 +44,14 @@ class add_in_tail(unittest.TestCase):
         self.assertEqual(s_list.find(8).next.value, 11)
         self.assertEqual(s_list.len(), 3)
 
+        #check len after add Node(0) in empty list
+        s_list = LinkedList2()
+        s_list.add_in_tail(Node(0))
+        s_list.len()
+        self.assertEqual(s_list.len(), 1)
+        self.assertNotEqual(s_list.len(), 0)
+        self.assertEqual(s_list.find(0).value, 0)
+
 
 class insert(unittest.TestCase):
     def test_insert(self):
@@ -71,6 +79,7 @@ class insert(unittest.TestCase):
         self.assertEqual(s_list.find(1).next.value, 2)
         self.assertEqual(s_list.head.value, 1)
         self.assertEqual(s_list.tail.value, 99)
+        s_list.len()
         self.assertEqual(s_list.len(), 6)
 
         #insert after head of list
@@ -102,6 +111,7 @@ class insert(unittest.TestCase):
         self.assertEqual(s_list.head.next.value, 2)
         self.assertEqual(s_list.tail.prev.value, 5)
         self.assertEqual(s_list.tail.next, None)
+        s_list.len()
         self.assertEqual(s_list.len(), 5)
 
         #with empty list
@@ -112,6 +122,7 @@ class insert(unittest.TestCase):
         self.assertEqual(s_list.tail.value, 205)
         self.assertEqual(s_list.head.prev, None)
         self.assertEqual(s_list.head.next, None)
+        s_list.len()
         self.assertEqual(s_list.len(), 1)
 
     def test_insert_equal_number(self):
@@ -154,6 +165,7 @@ class add_in_head(unittest.TestCase):
         self.assertEqual(s_list.head.next.value, 4)
         self.assertEqual(s_list.tail.prev.value, 88)
         self.assertEqual(s_list.tail.next, None)
+        s_list.len()
         self.assertEqual(s_list.len(), 2)
 
         #add in non empty list
@@ -176,6 +188,7 @@ class add_in_head(unittest.TestCase):
         self.assertEqual(s_list.tail.prev.value, 88)
         self.assertEqual(s_list.head.prev, None)
         self.assertEqual(s_list.tail.next, None)
+        s_list.len()
         self.assertEqual(s_list.len(), 4)
 
 
@@ -205,6 +218,7 @@ class combine_all_methods(unittest.TestCase):
         self.assertEqual(s_list.head.next.value, 11)
         self.assertEqual(s_list.find(11).prev.value, 55)
         self.assertEqual(s_list.head.next.prev.value, 55)
+        s_list.len()
         self.assertEqual(s_list.len(), 4)
 
         #add another element in head with add_in_head
@@ -220,6 +234,7 @@ class combine_all_methods(unittest.TestCase):
         self.assertEqual(s_list.head.value, 99)
         self.assertEqual(s_list.tail.value, 115)
         self.assertEqual(s_list.tail.prev.value, 48)
+        s_list.len()
         self.assertEqual(s_list.len(), 6)
 
 
@@ -236,6 +251,7 @@ class delete(unittest.TestCase):
         self.assertEqual(s_list.head.value, 2)
         self.assertEqual(s_list.head.prev, None)
         self.assertEqual(s_list.head.next.value, 4)
+        s_list.len()
         self.assertEqual(s_list.len(), 3)
 
         #delete node from tail
@@ -255,6 +271,7 @@ class delete(unittest.TestCase):
         self.assertEqual(s_list.head.value, 1)
         self.assertEqual(s_list.head.next.value, 4)
         self.assertEqual(s_list.head.next.prev.value, 1)
+        s_list.len()
         self.assertEqual(s_list.len(), 3)
 
     def test_delete_all_nodes(self):
@@ -292,6 +309,7 @@ class delete(unittest.TestCase):
         s_list.delete(5, all=True)
         self.assertEqual(s_list.head.value, 1)
         self.assertEqual(s_list.tail.value, 1)
+        s_list.len()
         self.assertEqual(s_list.len(), 1)
 
 class add_in_empty_list(unittest.TestCase):
