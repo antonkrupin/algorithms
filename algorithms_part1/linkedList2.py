@@ -91,9 +91,10 @@ class LinkedList2:
 
     def len(self):
         length = 0
-        while self.head is not None:
+        node = self.head
+        while node is not None:
             length += 1
-            self.head = self.head.next
+            node = node.next
         return length
 
     def insert(self, afterNode, newNode):
@@ -144,6 +145,14 @@ class LinkedList2:
             self.head = item
             self.head.prev = None
             self.head.next = headElem
+            self.head.next.prev = self.head
+            """
+            headElem = self.head     
+            self.head = item         
+            self.head.prev = None    
+            self.head.next = headElem 
+            headElem.next.prev = self.head
+            """
 """
 s_list = LinkedList2()
 s_list = LinkedList2()
@@ -151,14 +160,13 @@ s_list.add_in_tail(Node(1))
 s_list.add_in_tail(Node(2))
 s_list.add_in_tail(Node(4))
 s_list.add_in_tail(Node(5))
-
 s_list.insert(Node(2), Node(3))
 print(s_list.find(3).value)
 print('new node next',s_list.find(3).next.value)
 print('new node prev',s_list.find(3).prev.value)
-
 print('_____________')
 s_list.print_all_nodes()
+"""
 """
 s_list = LinkedList2()
 s_list.add_in_tail(Node(2))
@@ -181,4 +189,47 @@ print('head',s_list.head.value)
 print('tail',s_list.tail.value)
 print('head next', s_list.head.next.value)
 print('tail prev', s_list.tail.prev.value)
+"""
+"""
+s_list = LinkedList2()
+
+s_list.add_in_tail(Node(1))
+s_list.add_in_head(Node(11))
+s_list.insert(Node(1), Node(99))
+s_list.add_in_tail(Node(205))
+s_list.insert(Node(205), Node(12))
+s_list.add_in_head(Node(16))
+s_list.insert(None, Node(11111))
+
+print('head',s_list.head.value)
+print('tail',s_list.tail.value)
+print('head prev', s_list.head.prev)
+print('head next', s_list.head.next.value)
+print('tail prev', s_list.tail.prev.value)
+print('tail next', s_list.tail.next)
+
+s_list.print_all_nodes()
+"""
+"""
+s_list = LinkedList2()
+s_list.add_in_tail(Node(11))
+s_list.insert(Node(11), Node(22))
+s_list.add_in_tail(Node(48))
+s_list.add_in_head(Node(55))
+
+print('head value',s_list.head.value)
+print('head next', s_list.head.next.value)
+print('head next prev', s_list.head.next.value)
+print('find(11) prev', s_list.find(11).prev.value)
+
+print('_________________')
+s_list.print_all_nodes()
+"""
+"""
+s_list = LinkedList2()
+
+s_list.add_in_tail(Node(5))
+print(s_list.head.value)
+print(s_list.tail.value)
+"""
 
