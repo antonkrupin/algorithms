@@ -124,7 +124,6 @@ class LinkedList2:
                         node.next = newNode
                         newNode.prev = node
                         node.next.next.prev = newNode
-                        #node.next.prev = newNode
                         break
                 node = node.next
     
