@@ -240,7 +240,6 @@ class delete(unittest.TestCase):
 
         #delete node from tail
         s_list.delete(5)
-        print('tail', s_list.tail.value)
         self.assertEqual(s_list.tail.value, 4)
         self.assertEqual(s_list.tail.prev.value, 2)
         self.assertEqual(s_list.len(), 2)
@@ -305,6 +304,7 @@ class add_in_empty_list(unittest.TestCase):
         self.assertEqual(s_list.tail.value, 11)
         self.assertEqual(s_list.head.prev, None)
         self.assertEqual(s_list.tail.next, None)
+        s_list.len()
         self.assertEqual(s_list.len(), 1)
 
         #insert in list
