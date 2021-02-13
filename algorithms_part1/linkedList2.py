@@ -50,8 +50,8 @@ class LinkedList2:
                 if node.value == val:
                     if node.prev == None:
                         if self.head.next == None:
-                            self.head == None
-                            self.tail == None
+                            self.head = None
+                            self.tail = None
                         else:
                             self.head.next.prev = None
                             self.head = self.head.next
@@ -124,6 +124,7 @@ class LinkedList2:
                         node.next = newNode
                         newNode.prev = node
                         node.next.next.prev = newNode
+                        #node.next.prev = newNode
                         break
                 node = node.next
     
@@ -146,3 +147,37 @@ class LinkedList2:
             self.head.next = headElem
             self.head.next.prev = self.head
             
+"""
+s_list = LinkedList2()
+s_list.add_in_head(Node(22))
+print('len', s_list.len())
+s_list.delete(22)
+"""
+"""
+s_list.add_in_head(Node(16))
+s_list.insert(Node(16), Node(88))
+s_list.add_in_head(Node(19))
+s_list.insert(Node(88), Node(1))
+s_list.delete(16)
+s_list.add_in_tail(Node(15))
+s_list.add_in_head(Node(15))
+s_list.insert(Node(88),Node(15))
+s_list.delete(15, all=True)
+"""
+"""
+print('head', s_list.head)
+print('tail', s_list.tail)
+#print('head',s_list.head.value)
+#print('head prev', s_list.head.prev)
+#print('head next', s_list.head.next.value)
+#print('tail', s_list.tail.value)
+#print('tail prev', s_list.tail.prev.value)
+#print('tail prev prev', s_list.tail.prev.prev.value)
+#print('tail next', s_list.tail.next)
+print('______________')
+s_list.print_all_nodes()
+print('_____________')
+print('len', s_list.len())
+"""
+#разобраться с Head and prev next
+
