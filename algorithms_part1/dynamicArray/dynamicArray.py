@@ -1,5 +1,5 @@
 import ctypes
-from random import randint
+
 
 class DynArray:
     def __init__(self):
@@ -59,12 +59,6 @@ class DynArray:
                 self.make_array(new_capacity)
                 self.capacity = new_capacity
         else:
-            raise IndexError('Index is out of bounds')
-
-    def testFunc(self, index):
-        try:
-            index > 0
-        except IndexError:
             raise IndexError('Index is out of bounds')
 
 
