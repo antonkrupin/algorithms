@@ -44,21 +44,29 @@ class DynArray:
         else:
             raise IndexError('Index is out of bounds')
     
+    def delete(self, index):
+        if index >= 0 and index < self.count:
+            i = index
+            while (i < self.count - 1):
+                self.array[i] = self.array[i + 1]
+                i += 1
+            self.count = self.count - 1
 
-da = DynArray()
+            if self.count / self.capacity < 0.5 and self.capacity != 16:
+                new_capacity = int(self.capacity / 1.5)
+                if new_capacity < 16:
+                    new_capacity = 16
+                self.make_array(new_capacity)
+                self.capacity = new_capacity
+        else:
+            raise IndexError('Index is out of bounds')
 
-testLen = randint(5,10)
+    def testFunc(self, index):
+        try:
+            index > 0
+        except IndexError:
+            raise IndexError('Index is out of bounds')
 
-for i in range(testLen):
-    elem = randint(1,9)
-    da.append(elem)
-    print(da[i])
-
-da.insert(4,50)
-print('___________')
-
-for elem in da:
-    print(elem)
 
 
 
