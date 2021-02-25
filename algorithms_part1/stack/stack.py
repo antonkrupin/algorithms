@@ -24,11 +24,3 @@ class Stack:
         else:
             return None 
 
-stack = Stack()
-
-stack = Stack()
-stack.push(1)
-stack.push("2")
-stack.push(3.14)
-while stack.size() > 0:
-    print(stack.pop())
