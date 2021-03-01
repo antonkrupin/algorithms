@@ -16,3 +16,22 @@ class Queue:
 
     def size(self):
         return len(self.queue)
+    
+    def rotateQueue(self, value):
+        if value == 0 or len(self.queue) == 0:
+            return self.queue
+        
+        if value > len(self.queue):
+            rotateCf = value % len(self.queue)
+            for i in range(rotateCf):
+                el = self.queue[0]
+                newQueue = self.queue[1:] + [el]
+                self.queue = newQueue
+            return self.queue
+        else:
+            rotateCf = value
+            for i in range(rotateCf):
+                el = self.queue[0]
+                newQueue = self.queue[1:] + [el]
+                self.queue = newQueue
+            return self.queue
