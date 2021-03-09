@@ -5,8 +5,6 @@ class Node:
         self.next = None
 
 class OrderedList:
-    #asc = True храним по возрастанию 1, 2, 3
-    #asc = False храним по убыванию 3, 2, 1
     def __init__(self, asc):
         self.head = None
         self.tail = None
@@ -57,9 +55,6 @@ class OrderedList:
 
                 node = node.next
 
-        # автоматическая вставка value 
-        # в нужную позицию
-
     def find(self, val):
         return None # здесь будет ваш код
 
@@ -72,7 +67,12 @@ class OrderedList:
         self.tail = None
 
     def len(self):
-        return 0 # здесь будет ваш код
+        node = self.head
+        counter = 0
+        while node is not None:
+            counter += 1
+            node = node.next
+        return counter
 
     def get_all(self):
         r = []
@@ -88,16 +88,20 @@ class OrderedList:
             print(node.value)
             node = node.next
 
-#это не удаляем
-"""
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
         super(OrderedStringList, self).__init__(asc)
 
     def compare(self, v1, v2):
-        # переопределённая версия для строк
-        return 0
-"""
+        string1 = str(v1).strip()
+        string2 = str(v2).strip()
+
+        if string1 > string2:
+            return 1
+        elif string1 < string2:
+            return -1
+        else:
+            return 0
 
 ord = OrderedList(True)
 
@@ -109,6 +113,19 @@ ord.add(145)
 ord.add(2)
 ord.add(11)
 ord.add(-1)
+print('len', ord.len())
+ord.clean(False)
+print('len', ord.len())
+
+ord.add(5)
+ord.add(4)
+ord.add(0)
+ord.add(3)
+ord.add(145)
+ord.add(2)
+ord.add(11)
+ord.add(-1)
+
 
 print('head', ord.head.value)
 print('head prev', ord.head.prev)
@@ -118,3 +135,12 @@ print('tail prev', ord.tail.prev.value)
 print('tail next', ord.tail.next)
 print('__________')
 ord.print_all_nodes()
+
+
+ord1 = OrderedStringList(False)
+ord1.add('Ananas')
+ord1.add('Banana')
+ord1.add('AAAAAAAAAAA')
+print('___________')
+ord1.print_all_nodes()
+print('len 2 ', ord1.len())
