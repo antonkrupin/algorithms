@@ -56,10 +56,41 @@ class OrderedList:
                 node = node.next
 
     def find(self, val):
-        return None # здесь будет ваш код
+        nodeValue = val
+        if ((self.__ascending == True and (self.compare(nodeValue, self.head.value) == -1 or self.compare(nodeValue, self.tail.value) == 1)) or
+            (self.__ascending == False and (self.compare(nodeValue, self.head.value) == 1 or self.compare(nodeValue, self.tail.value) == -1))):
+            return None
+        else:
+            node = self.head
+            while node is not None:
+                if self.compare(nodeValue, node.value) == 0:
+                    return node
+                node = node.next
+            return None
 
     def delete(self, val):
-        pass # здесь будет ваш код
+        node = self.head
+        while node is not None:
+            if node.value == val:
+                if node.prev == None:
+                    if self.head.next == None:
+                        self.head == None
+                        self.tail == None
+                    else:
+                        self.head.next.prev = None
+                        self.head = self.head.next
+                else:
+                    if node.next == None:
+                        node.prev.next = None
+                        self.tail = node.prev
+                    else:
+                        node.prev.next = node.next
+                        node.next.prev = node.prev
+                return True
+            else:
+                node = node.next
+        return False
+            
 
     def clean(self, asc):
         self.__ascending = asc
@@ -114,9 +145,10 @@ ord.add(2)
 ord.add(11)
 ord.add(-1)
 print('len', ord.len())
-ord.clean(False)
-print('len', ord.len())
-
+#ord.clean(False)
+#print('len', ord.len())
+print(ord.find(11))
+"""
 ord.add(5)
 ord.add(4)
 ord.add(0)
@@ -125,8 +157,9 @@ ord.add(145)
 ord.add(2)
 ord.add(11)
 ord.add(-1)
+"""
 
-
+"""
 print('head', ord.head.value)
 print('head prev', ord.head.prev)
 print('head next', ord.head.next.value)
@@ -136,7 +169,19 @@ print('tail next', ord.tail.next)
 print('__________')
 ord.print_all_nodes()
 
+print('____________')
+ord.delete(11)
+print('head', ord.head.value)
+print('head prev', ord.head.prev)
+print('head next', ord.head.next.value)
+print('tail', ord.tail.value)
+print('tail prev', ord.tail.prev.value)
+print('tail next', ord.tail.next)
+print('__________')
+ord.print_all_nodes()
 
+"""
+"""
 ord1 = OrderedStringList(False)
 ord1.add('Ananas')
 ord1.add('Banana')
@@ -144,3 +189,4 @@ ord1.add('AAAAAAAAAAA')
 print('___________')
 ord1.print_all_nodes()
 print('len 2 ', ord1.len())
+"""
