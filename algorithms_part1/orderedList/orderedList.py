@@ -19,7 +19,6 @@ class OrderedList:
             return 0
 
     def add(self, value):
-        pass
         item = Node(value)
         if self.head is None:
             self.head = item
@@ -70,6 +69,10 @@ class OrderedList:
 
     def delete(self, val):
         node = self.head
+        if (node.prev == None and node.next == None) and node.value == val:
+            self.head = None
+            self.tail = None
+            return True
         while node is not None:
             if node.value == val:
                 if node.prev == None:
@@ -91,7 +94,6 @@ class OrderedList:
                 node = node.next
         return False
             
-
     def clean(self, asc):
         self.__ascending = asc
         self.head = None
@@ -112,12 +114,7 @@ class OrderedList:
             r.append(node)
             node = node.next
         return r
-
-    def print_all_nodes(self):
-        node = self.head
-        while node is not None:
-            print(node.value)
-            node = node.next
+    
 
 class OrderedStringList(OrderedList):
     def __init__(self, asc):
@@ -133,60 +130,3 @@ class OrderedStringList(OrderedList):
             return -1
         else:
             return 0
-
-ord = OrderedList(True)
-
-ord.add(5)
-ord.add(4)
-ord.add(0)
-ord.add(3)
-ord.add(145)
-ord.add(2)
-ord.add(11)
-ord.add(-1)
-print('len', ord.len())
-#ord.clean(False)
-#print('len', ord.len())
-print(ord.find(11))
-"""
-ord.add(5)
-ord.add(4)
-ord.add(0)
-ord.add(3)
-ord.add(145)
-ord.add(2)
-ord.add(11)
-ord.add(-1)
-"""
-
-"""
-print('head', ord.head.value)
-print('head prev', ord.head.prev)
-print('head next', ord.head.next.value)
-print('tail', ord.tail.value)
-print('tail prev', ord.tail.prev.value)
-print('tail next', ord.tail.next)
-print('__________')
-ord.print_all_nodes()
-
-print('____________')
-ord.delete(11)
-print('head', ord.head.value)
-print('head prev', ord.head.prev)
-print('head next', ord.head.next.value)
-print('tail', ord.tail.value)
-print('tail prev', ord.tail.prev.value)
-print('tail next', ord.tail.next)
-print('__________')
-ord.print_all_nodes()
-
-"""
-"""
-ord1 = OrderedStringList(False)
-ord1.add('Ananas')
-ord1.add('Banana')
-ord1.add('AAAAAAAAAAA')
-print('___________')
-ord1.print_all_nodes()
-print('len 2 ', ord1.len())
-"""
