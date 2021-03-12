@@ -69,6 +69,8 @@ class OrderedList:
 
     def delete(self, val):
         node = self.head
+        if node == None:
+            return False
         if (node.prev == None and node.next == None) and node.value == val:
             self.head = None
             self.tail = None
