@@ -13,9 +13,12 @@ class HashTable:
     def seek_slot(self, value):
         if self.slots[self.hash_fun(value)] != None:
             start = self.hash_fun(value)
-            for i in range(1, (self.size % self.step)+1):
-                if self.slots[(start + self.step * i) % self.size] == None:
-                    return (start + self.step * i) % self.size
+            for i in range(self.size + 1):
+                if i == start:
+                    continue
+                else:
+                    if self.slots[i] == None:
+                        return i
         else:
             return self.hash_fun(value)
         return None
@@ -34,5 +37,3 @@ class HashTable:
             if self.slots[i] == value:
                 return i
         return None
-
-
