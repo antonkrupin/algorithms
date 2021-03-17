@@ -13,7 +13,7 @@ class HashTable:
     def seek_slot(self, value):
         if self.slots[self.hash_fun(value)] != None:
             start = self.hash_fun(value)
-            for i in range(self.size + 1):
+            for i in range(self.size):
                 if i == start:
                     continue
                 else:
