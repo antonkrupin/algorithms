@@ -1,5 +1,3 @@
-from random import randint
-
 class PowerSet:
     def __init__(self):
         self.powerset = []
@@ -78,21 +76,3 @@ class PowerSet:
             return True
         else:
             return False
-
-ps = PowerSet()
-"""
-ps.put(1)
-ps.put(-5)
-ps.put(13)
-ps.put(0)
-ps.put(4)
-ps.put(9)
-ps.put(92)
-ps.put(131)
-ps.put(11)
-ps.put(18)
-"""
-
-
-test = ps.union([1, -5, 13, 0, 4, 9, 92, 131, 11, 18])
-print(test)
