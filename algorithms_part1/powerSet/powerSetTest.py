@@ -77,20 +77,6 @@ class powerSetIntersectionTest(unittest.TestCase):
         psIntersection = ps.intersection([])
         self.assertEqual(psIntersection, None)
 
-    def test_powerSetIntersectionBigSet(self):
-        ps = PowerSet()
-        for i in range(20000):
-            elem = randint(20,2000)
-            ps.put(elem)
-
-        intersectionSet = []
-        for i in range(100):
-            elem = randint(20,2000)
-            intersectionSet.append(elem)
-
-        psIntersection = ps.intersection(intersectionSet)
-        print(psIntersection)
-
 class powerSetUnionTest(unittest.TestCase):
     def test_powerSetUnion(self):
         ps = PowerSet()
