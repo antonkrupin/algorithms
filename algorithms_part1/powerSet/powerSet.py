@@ -40,7 +40,7 @@ class PowerSet:
         if len(intersectionSet) != 0:
             return intersectionSet
         else:
-            return None 
+            return None
 
     def union(self, set2):
         unionSet = self.powerset
