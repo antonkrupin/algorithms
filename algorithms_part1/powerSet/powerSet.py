@@ -32,12 +32,12 @@ class PowerSet:
         return False
 
     def intersection(self, set2):
-        intersectionSet = []
+        intersectionSet = PowerSet()
         for i in self.powerset:
             if set2.get(i):
-                intersectionSet.append(i)
+                intersectionSet.put(i)
         
-        return intersectionSet
+        return intersectionSet.powerset
 
     def union(self, set2):
         unionSet = self.intersection(set2)
@@ -53,12 +53,12 @@ class PowerSet:
         return unionSet
 
     def difference(self, set2):
-        differenceSet = []
+        differenceSet = PowerSet()
         for i in self.powerset:
             if set2.get(i) == False:
-                differenceSet.append(i)
+                differenceSet.put(i)
 
-        return differenceSet
+        return differenceSet.powerset
 
     def issubset(self, set2):
         counter = 0
