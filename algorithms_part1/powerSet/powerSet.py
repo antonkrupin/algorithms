@@ -37,18 +37,18 @@ class PowerSet:
             if set2.get(i):
                 intersectionSet.put(i)
         
-        return intersectionSet.powerset
+        return intersectionSet
 
     def union(self, set2):
         unionSet = self.intersection(set2)
         
         for i in self.powerset:
-            if (i in unionSet) == False:
-                unionSet.append(i)
+            if set2.get(i) == False:
+                unionSet.put(i)
         
         for i in set2.powerset:
-            if (i in unionSet) == False:
-                unionSet.append(i)
+            if unionSet.get(i) == False:
+                unionSet.put(i)
 
         return unionSet
 
@@ -58,7 +58,7 @@ class PowerSet:
             if set2.get(i) == False:
                 differenceSet.put(i)
 
-        return differenceSet.powerset
+        return differenceSet
 
     def issubset(self, set2):
         counter = 0
