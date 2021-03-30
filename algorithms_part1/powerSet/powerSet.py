@@ -3,10 +3,7 @@ class PowerSet:
         self.powerset = []
 
     def size(self):
-        length = 0
-        for i in range(len(self.powerset)):
-            length += 1
-        return length
+        return len(self.powerset)
         
     def put(self, value):
         for i in self.powerset:

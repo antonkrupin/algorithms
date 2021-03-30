@@ -117,10 +117,10 @@ class powerSetIntersectionTest(unittest.TestCase):
     
     def test_powerSetIntersectionManyElements(self):
         ps = PowerSet()
+        ps1 = PowerSet()
         for i in range(1, 10001):
             ps.put(i)
 
-        ps1 = PowerSet()
         for i in range(9900, 20001):
             ps1.put(i)
 
