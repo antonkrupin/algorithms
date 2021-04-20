@@ -18,9 +18,14 @@ class NativeCache:
         return False
 
     def put(self, key, value):
-        index = self.hash_fun(key)
-        self.values[index] = key
-        self.slots[index] = value
+        if not None in self.slots:
+            minHitIndex = self.hits.index(min(self.hits))
+            self.values[minHitIndex] = key
+            self.slots[minHitIndex] = value
+        else:
+            index = self.hash_fun(key)
+            self.values[index] = key
+            self.slots[index] = value
 
     def get(self, key):
         if self.is_key(key):
@@ -29,13 +34,3 @@ class NativeCache:
             return self.slots[self.hash_fun(key)]
         else:
             return None
-
-nc = NativeCache(32)
-
-
-nc.put('name', 'Anton')
-print(nc.slots)
-print(nc.values)
-nc.get('name')
-nc.get('name')
-print(nc.hits)
