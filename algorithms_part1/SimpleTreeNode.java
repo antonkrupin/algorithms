@@ -47,6 +47,10 @@ class SimpleTree<T>
         SimpleTreeNode<T> parent = NodeToDelete.Parent;
         if (parent != null && parent.Children != null) {
             parent.Children.remove(NodeToDelete);
+
+            if (parent.Children.isEmpty()) {
+                parent.Children = null;
+            }
         }
 
         NodeToDelete.Parent = null;
@@ -105,6 +109,10 @@ class SimpleTree<T>
         SimpleTreeNode<T> oldParentNode = OriginalNode.Parent;
         if (oldParentNode != null && oldParentNode.Children != null) {
             oldParentNode.Children.remove(OriginalNode);
+
+            if (oldParentNode.Children.isEmpty()) {
+                oldParentNode.Children = null;
+            }
         }
 
         AddChild(NewParent, OriginalNode);
@@ -143,7 +151,7 @@ class SimpleTree<T>
         while (!nodesList.isEmpty()) {
             SimpleTreeNode<T> node = nodesList.pop();
 
-            if (node.Children == null) {
+            if (node.Children == null || node.Children.isEmpty()) {
                 counter = counter + 1;
             } else {
                 for (SimpleTreeNode<T> childNode : node.Children) {
